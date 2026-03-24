@@ -1,0 +1,24 @@
+# BUILD STUFF
+.development/
+build/
+dist/
+public/
+
+# ELM STUFF
+elm-stuff/
+node_modules/
+tests/VerifyExamples
+
+# MACOS STUFF
+.DS_Store
+
+# PARCEL BUILD STUFF
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# SCSS STUFF
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map

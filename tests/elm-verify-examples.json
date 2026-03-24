@@ -1,0 +1,6 @@
+{
+  "tests": [
+    "exposed",
+    "./README.md"
+  ]
+}
