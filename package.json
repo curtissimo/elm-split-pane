@@ -5,6 +5,10 @@
     "./build/styles/main.css",
     "./build/styles/main.css.map"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/curtissimo/elm-split-pane.git"
+  },
   "description": "A nestable split pane for Elm.",
   "devDependencies": {
     "@curtissimo/elm-hot": "latest",
