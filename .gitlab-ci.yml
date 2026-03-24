@@ -62,6 +62,8 @@ pages:
   stage: publish
   dependencies:
     - build-pages
+  script:
+    - echo "Publishing examples"
   artifacts:
     paths:
       - public/
