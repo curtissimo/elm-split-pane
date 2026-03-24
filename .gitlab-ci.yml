@@ -6,12 +6,12 @@ stages:
   - publish
 
 include:
-  - template: Jobs/Dependency-Scanning.v2.gitlab-ci.yml
+  - component: $CI_SERVER_FQDN/components/dependency-scanning/main@1.1.1
 
 variables:
   NODE_VERSION: '24'
 
-base: &defaults
+.base: &defaults
   image: node:${NODE_VERSION}
   cache:
     - key:
