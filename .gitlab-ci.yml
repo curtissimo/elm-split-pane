@@ -5,7 +5,7 @@ stages:
   - publish
 
 include:
-  - template: Jobs/Dependency-Scanning.latest.gitlab-ci.yml
+  - template: Jobs/Dependency-Scanning.v2.gitlab-ci.yml
 
 variables:
   NODE_VERSION: '24'
