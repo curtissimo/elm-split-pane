@@ -1,6 +1,6 @@
 {
   "name": "@curtissimo/elm-split-pane",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "./build/styles/main.css",
     "./build/styles/main.css.map"
@@ -26,7 +26,7 @@
   "scripts": {
     "build:assets:css": "parcel build assets/styles/main.css --dist-dir build/styles",
     "build:assets": "npm run build:assets:css;",
-    "build:examples": "parcel build examples/src/index.html --dist-dir public",
+    "build:examples": "parcel build examples/src/index.html --dist-dir public --public-url ./",
     "git:set-remote": "npm run git:set-remote:ssh",
     "git:set-remote:http": "git remote add origin https://gitlab.com/curtissimo/elm-split-pane.git",
     "git:set-remote:ssh": "git remote add origin git@gitlab.com:curtissimo/elm-split-pane.git",
