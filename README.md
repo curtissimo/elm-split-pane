@@ -4,51 +4,49 @@
 
 A nestable split pane for Elm.
 
-<!-- Replace the link if you choose to use the GitLab Unique Domain feature. -->
 Check out the [live example](https://curtissimo.gitlab.io/elm-split-pane).
-Source for the examples can be found in the [`./examples`]((https://gitlab.com/curtissimo/elm-split-pane/-/tree/main/examples)
+Source for the examples can be found in the [`./examples`](https://gitlab.com/curtissimo/elm-split-pane/-/tree/main/examples)
 directory.
 
 ## Design Goals
 
-> Adapted from Dillon Kearns' [design goals
-> advice](https://github.com/dillonkearns/idiomatic-elm-package-guide#explicitly-state-design-goals-in-your-readme):
-> 
-> **What differentiates your project from any other project out there?**
-> 
-> Since Elm
-> packages are reliable due to the nature of the elm language and its guarantees,
-> what makes Elm packages stick out more is not its reliability, but its design
-> philosophy. So we put the design philosophy as the first section after the
-> initial introduction.
-> 
-> Writing out explicit design goals is a great idea even before you write any code
-> (of course you can always revise them). They serve as:
-> 
-> - A reminder to the package author of the core principles during design
->   iteration
-> - A clear statement of goals to help users decide whether the library is a good
->   fit for them
-> - A reference point for conversations about feature requests that helps ground
->   the conversation in the basic goals of the library. This makes for a much more
->   empathetic conversation (for example, someone could have a great idea that's
->   not inline with the design goals of a library... in that case, perhaps a new
->   library could be created, OR a different solution could be considered that
->   honors the design goals of the library)
+So, I needed a nestable split pane for an app I was building with the
+following features:
 
-## Overview
+- Sets the fewest style attributes possible in the DOM
+- Provides CSS classes on child panes to indicate width
+- Can handle absolute and relative measures
+- Can handle nested split panes
+- Can show and hide the secondary panes
+- Can properly handle overflow
+- Customizable via CSS
 
-**Document the most common usage of your package with a code sample and BRIEF
-explanation.**
+Turns out, that's a lot to ask of some split panes. There's a nice
+version with
+[whale9490/elm-split-pane](https://package.elm-lang.org/packages/whale9490/elm-split-pane/latest/),
+but it unfortunately didn't meet the needs of what I wanted for the first,
+second, and last items.
 
 ## Usage
 
-**Provide more documentation about the use of your package.**
+The split pane relies on the size of the container that it's put in. So, either
+set a fixed height/width on the container, or do some Grid Layout stuff (which
+is what I do).
+
+The following table shows the CSS variables available for customization with
+their default values.
+
+| Name                                                |  Default  |
+| --------------------------------------------------- | :-------: |
+| `--curtissimo-split-pane-gutter-width`              |   `8px`   |
+| `--curtissimo-split-pane-gutter-border-color`       | `#aaaaaa` |
+| `--curtissimo-split-pane-gutter-handle-color`       |  `black`  |
+| `--curtissimo-split-pane-gutter-hover-color`        | `#f5c264` |
+| `--curtissimo-split-pane-gutter-hover-handle-color` | `#333333` |
 
 ### NPM Package
 
-This package relies on external 
-styles.
+This package relies on external styles.
 
 Install the package from NPM using the following command.
 
@@ -56,11 +54,10 @@ Install the package from NPM using the following command.
 npm install --save-dev @curtissimo/elm-split-pane
 ```
 
-Then, as part of your build process, include the external 
-styles.
+Then, as part of your build process, include the external
+styles. To include the CSS, use the following import adapted to your
+build's needs.
 
-To include the CSS, use the following import.
-
-```css 
+```css
 @import url(@curtissimo/elm-split-pane/main.css);
 ```

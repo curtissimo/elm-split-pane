@@ -1,6 +1,6 @@
 {
   "name": "@curtissimo/elm-split-pane",
-  "version": "0.0.1-alpha.0",
+  "version": "1.0.0",
   "files": [
     "./build/styles/main.css",
     "./build/styles/main.css.map"

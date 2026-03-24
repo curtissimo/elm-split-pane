@@ -1,0 +1,318 @@
+.curtissimo-split-pane {
+  display: flex;
+  overflow: hidden;
+
+  --curtissimo-split-pane-gutter-width-default: 8px;
+  --curtissimo-split-pane-gutter-border-color-default: #aaaaaa;
+  --curtissimo-split-pane-gutter-handle-color-default: black;
+  --curtissimo-split-pane-gutter-hover-color-default: #f5c264;
+  --curtissimo-split-pane-gutter-hover-handle-color-default: #333333;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .curtissimo-split-pane {
+    --curtissimo-split-pane-gutter-border-color-default: #aaaaaa;
+    --curtissimo-split-pane-gutter-handle-color-default: white;
+    --curtissimo-split-pane-gutter-hover-handle-color-default: white;
+  }
+}
+
+.curtissimo-split-pane * {
+  overflow: hidden;
+}
+
+.curtissimo-split-pane-primary {
+  flex-grow: 1;
+}
+
+.curtissimo-split-pane-primary,
+.curtissimo-split-pane-secondary {
+  display: grid;
+}
+
+.curtissimo-split-pane-secondary {
+  flex-shrink: 0;
+}
+
+.curtissimo-split-pane-horizontal.curtissimo-split-pane-secondary-after {
+  flex-direction: column;
+}
+
+.curtissimo-split-pane-horizontal.curtissimo-split-pane-secondary-before {
+  flex-direction: column-reverse;
+}
+
+.curtissimo-split-pane-vertical.curtissimo-split-pane-secondary-after {
+  flex-direction: row;
+}
+
+.curtissimo-split-pane-vertical.curtissimo-split-pane-secondary-before {
+  flex-direction: row-reverse;
+}
+
+.curtissimo-split-pane-horizontal.curtissimo-split-pane-active,
+.curtissimo-split-pane-horizontal > .curtissimo-split-pane-gutter {
+  cursor: ns-resize;
+}
+
+.curtissimo-split-pane-vertical.curtissimo-split-pane-active,
+.curtissimo-split-pane-vertical > .curtissimo-split-pane-gutter {
+  cursor: ew-resize;
+}
+
+/* GUTTERS */
+
+.curtissimo-split-pane-gutter {
+  position: relative;
+  display: grid;
+  overflow: visible;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* THICK GUTTERS */
+
+.curtissimo-split-pane-gutter-thick {
+  border: 1px solid
+    var(
+      --curtissimo-split-pane-gutter-handle-color,
+      var(--curtissimo-split-pane-gutter-handle-color-default)
+    );
+}
+
+.curtissimo-split-pane-active > .curtissimo-split-pane-gutter-thick,
+.curtissimo-split-pane-gutter-thick:hover {
+  background-color: var(
+    --curtissimo-split-pane-gutter-hover-color,
+    var(--curtissimo-split-pane-gutter-hover-color-default)
+  );
+  border-color: var(
+    --curtissimo-split-pane-gutter-border-color,
+    var(--curtissimo-split-pane-gutter-border-color-default)
+  );
+}
+
+.curtissimo-split-pane-gutter-thick > .curtissimo-split-pane-gutter-handle {
+  border-radius: var(
+    --curtissimo-split-pane-gutter-width,
+    var(--curtissimo-split-pane-gutter-width-default)
+  );
+  border: calc(
+      var(
+          --curtissimo-split-pane-gutter-width,
+          var(--curtissimo-split-pane-gutter-width-default)
+        ) /
+        2
+    )
+    solid
+    var(
+      --curtissimo-split-pane-gutter-handle-color,
+      var(--curtissimo-split-pane-gutter-handle-color-default)
+    );
+  height: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      2
+  );
+  margin: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      2
+  );
+  width: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      2
+  );
+}
+
+.curtissimo-split-pane-active
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle,
+.curtissimo-split-pane-gutter-thick:hover
+  > .curtissimo-split-pane-gutter-handle {
+  border-color: var(
+    --curtissimo-split-pane-gutter-hover-handle-color,
+    var(--curtissimo-split-pane-gutter-hover-handle-color-default)
+  );
+}
+
+.curtissimo-split-pane-horizontal > .curtissimo-split-pane-gutter-thick {
+  border-left-width: 0;
+  border-right-width: 0;
+  grid-template-columns: 1fr auto 1fr;
+  height: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) *
+      2
+  );
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(1) {
+  align-self: center;
+  justify-self: end;
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(2) {
+  align-self: center;
+  justify-self: center;
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(3) {
+  align-self: center;
+  justify-self: start;
+}
+
+.curtissimo-split-pane-vertical > .curtissimo-split-pane-gutter-thick {
+  border-bottom-width: 0;
+  border-top-width: 0;
+  grid-template-rows: 1fr auto 1fr;
+  width: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) *
+      2
+  );
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(1) {
+  align-self: end;
+  justify-self: center;
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(2) {
+  align-self: center;
+  justify-self: center;
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thick
+  > .curtissimo-split-pane-gutter-handle:nth-child(3) {
+  align-self: start;
+  justify-self: center;
+}
+
+/* THIN GUTTERS */
+
+.curtissimo-split-pane-gutter-thin > .curtissimo-split-pane-gutter-handle {
+  display: none;
+}
+
+.curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child::after {
+  background-color: transparent;
+  content: " ";
+  overflow: visible;
+  position: absolute;
+}
+
+.curtissimo-split-pane-active
+  > .curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child:after,
+.curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child:hover:after {
+  background-color: var(
+    --curtissimo-split-pane-gutter-hover-color,
+    var(--curtissimo-split-pane-gutter-hover-color-default)
+  );
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child {
+  border-top: 1px solid
+    var(
+      --curtissimo-split-pane-gutter-border-color,
+      var(--curtissimo-split-pane-gutter-border-color-default)
+    );
+  display: block;
+  height: 1px;
+}
+
+.curtissimo-split-pane-horizontal
+  > .curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child::after {
+  bottom: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      -2
+  );
+  cursor: ns-resize;
+  left: 0;
+  right: 0;
+  top: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      -2
+  );
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child::after {
+  bottom: 0;
+  left: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      -2
+  );
+  right: calc(
+    var(
+        --curtissimo-split-pane-gutter-width,
+        var(--curtissimo-split-pane-gutter-width-default)
+      ) /
+      -2
+  );
+  top: 0;
+}
+
+.curtissimo-split-pane-vertical
+  > .curtissimo-split-pane-gutter-thin
+  > .curtissimo-split-pane-gutter-handle:first-child {
+  border-left: 1px solid
+    var(
+      --curtissimo-split-pane-gutter-border-color,
+      var(--curtissimo-split-pane-gutter-border-color-default)
+    );
+  display: block;
+  width: 1px;
+}

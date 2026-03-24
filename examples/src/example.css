@@ -1,0 +1,89 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+
+body {
+  background-color: #eeeeee;
+  display: grid;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  grid-template-rows: auto 1fr;
+}
+
+.control-panel {
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.control-panel > * {
+  margin-right: 1rem;
+}
+
+.radios {
+  display: flex;
+  align-items: center;
+}
+
+.radios > .control > .radio {
+  margin-right: 0.5rem;
+}
+
+.pane-content {
+  display: grid;
+  overflow: auto;
+}
+
+.pane-content :first-child {
+  align-self: end;
+  justify-self: center;
+}
+
+.pane-content :last-child {
+  align-self: start;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+}
+
+#__project-level {
+  display: grid;
+  overflow: hidden;
+}
+
+#__editor-level {
+  display: grid;
+}
+
+#__project-level .curtissimo-split-pane-primary {
+  background-color: skyblue;
+  color: black;
+}
+
+#__project-level .curtissimo-split-pane-secondary {
+  background-color: cadetblue;
+  color: black;
+}
+
+#__editor-level .curtissimo-split-pane-primary {
+  background-color: coral;
+  color: black;
+}
+
+#__editor-level .curtissimo-split-pane-secondary {
+  background-color: indianred;
+  color: black;
+}
+
+#__primary-editor-view {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.__overflow {
+  overflow: auto !important;
+}
+
+.__nowrap {
+  white-space: nowrap;
+}
